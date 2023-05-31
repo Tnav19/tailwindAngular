@@ -1,0 +1,76 @@
+<section class="bg-white dark:bg-gray-900 justify-center flex-auto px-1">
+ <div class="py-8 px-4 mx-auto max-w-3xl lg:py-16">
+     <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Add a New Job</h2>
+     <form [formGroup]="form">
+         <div class=" gap-4 sm:grid-cols-2 sm:gap-6">
+             <div class="sm:col-span-2">
+                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Job Number</label>
+                 <input type="text" name="name" id="name" formControlName="jobNumber" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Job Number" required="">
+                 <div *ngIf="f?.jobNumber?.touched && f?.jobNumber?.errors">
+                  <p *ngIf="f.jobNumber?.errors?.required"class="mt-2 text-sm text-red-600 dark:text-red-500">Job Number is Required</p>
+              </div>
+                </div>
+             <div class="w-full">
+                 <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Job Title</label>
+                 <input type="text" name="brand" id="brand" formControlName="jobTitle" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Job Title" required="">
+                 <div *ngIf="f?.jobTitle?.touched && f?.jobTitle?.errors">
+                  <p *ngIf="f.jobTitle?.errors?.required" class="mt-2 text-sm text-red-600 dark:text-red-500">Job Title is Required</p>
+              </div>
+                </div>
+             <div class="w-full">
+             <div date-rangepicker class="grid md:grid-cols-2 md:gap-6 flex ">
+              <div class="relative z-0 w-full mb-6 group px-1 ">
+               <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start Date</label>
+              
+                <input name="start" type="date" formControlName="startDate" class=" mr-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full  p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
+                <div *ngIf="f?.startDate?.touched && f?.startDate?.errors" >
+                 <div *ngIf="f.startDate?.errors?.required" class="mt-2 text-sm text-red-600 dark:text-red-500">Start Date is required</div>
+               </div>
+               </div>
+              
+              <div class="relative z-0 w-full mb-6 group px-1">
+               <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">End Date</label>
+              
+           
+                <input name="end" type="date" formControlName="endDate" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
+           
+                <div *ngIf="f?.endDate?.touched && f?.endDate?.errors" >
+                 <div *ngIf="f.endDate?.errors?.required" class="mt-2 text-sm text-red-600 dark:text-red-500">End Date is required</div>
+                 <div *ngIf="f.endDate?.errors?.invalidSelection" class="mt-2 text-sm text-red-600 dark:text-red-500">End date should be greater than start date.</div>
+               </div>
+               </div>
+            </div>
+           </div>
+     
+             <div>
+                 <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Experience Required</label>
+                 <select id="category" formControlName="experienceRequired" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                     <option hidden value="null">Select</option>
+                     <option value="true">True</option>
+                     <option value="false">False</option>
+                 </select>
+                 <div *ngIf="f?.experienceRequired?.touched && f?.experienceRequired?.errors" >
+                  <div *ngIf="f.experienceRequired?.errors?.required" class="mt-2 text-sm text-red-600 dark:text-red-500">Experience is required</div>
+                </div>
+             </div>
+             <div>
+                 <label for="item-weight" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number of Openings</label>
+                 <input type="number" name="item-weight" id="item-weight" formControlName="noOfOpenings" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="e.g 12" required="">
+                 <div *ngIf="f?.noOfOpenings?.touched && f?.noOfOpenings?.errors">
+                  <p *ngIf="f.noOfOpenings?.errors?.required" class="mt-2 text-sm text-red-600 dark:text-red-500">No Of Openings is Required</p>
+              </div>
+                </div> 
+             <div class="sm:col-span-2">
+                 <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Job Notes</label>
+                 <textarea id="description" rows="8" formControlName="jobNotes" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Your Job Notes here"></textarea>
+                 <div *ngIf="f?.jobNotes?.touched && f?.jobNotes?.errors">
+                  <p *ngIf="f.jobNotes?.errors?.required" class="mt-2 text-sm text-red-600 dark:text-red-500">Job Notes is Required</p>
+              </div>
+                </div>
+         </div>
+         <button ype="submit" [disabled]="!form?.valid" (click)="submit()" class="mt-2 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center text-white bg-picton-blue dark:bg-gray-700">
+             Add Job
+         </button>
+     </form>
+ </div>
+</section>
